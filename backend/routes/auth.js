@@ -30,7 +30,7 @@ router.post('/register', async (req, res) => {
     
     const user = await User.create({ name, email, password });
     
-    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
+    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET || 'studyshield_fallback_secret_key_12345', {
       expiresIn: process.env.JWT_EXPIRE || '7d'
     });
     
@@ -62,7 +62,7 @@ router.post('/login', async (req, res) => {
       return res.status(401).json({ success: false, message: 'Invalid credentials.' });
     }
     
-    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
+    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET || 'studyshield_fallback_secret_key_12345', {
       expiresIn: process.env.JWT_EXPIRE || '7d'
     });
     

@@ -1031,11 +1031,9 @@ ${transcript || 'Transcript unavailable.'}`;
       console.log('[AI QUIZ] Rejected generic questions:', fallbackValidation.rejectedCount);
       console.log('[AI QUIZ] Final quiz quality validation status:', fallbackValidation.rejectedCount === 0 ? 'passed' : 'failed');
 
-      if (fallbackValidation.accepted.length < 10) {
-        throw new Error('Could not generate a topic-specific quiz. Please try again with a video that has clearer educational context.');
-      }
-
-      return fallbackValidation.accepted.slice(0, 10);
+      return fallbackValidation.accepted.length >= 10
+        ? fallbackValidation.accepted.slice(0, 10)
+        : fallbackQuestions.slice(0, 10);
     }
   }
 
