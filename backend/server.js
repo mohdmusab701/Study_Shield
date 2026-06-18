@@ -125,6 +125,11 @@ app.get('/api/health', (req, res) => {
   });
 });
 
+// Root route for the API
+app.get('/', (req, res) => {
+  res.json({ success: true, message: 'StudyShield Backend API is running' });
+});
+
 // Error handling middleware
 app.use((err, req, res, next) => {
   console.error(err.stack);
