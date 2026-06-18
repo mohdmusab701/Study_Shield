@@ -13,7 +13,7 @@ app.use(helmet());
 // CORS configuration
 const allowedOrigins = [
   'http://localhost:3000',
-  'https://youtubestudyshield.netlify.app'
+  'https://study-shield-ypi1.vercel.app'
 ];
 
 app.use(cors({
